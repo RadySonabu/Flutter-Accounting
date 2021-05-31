@@ -1,15 +1,36 @@
 import 'dart:developer';
 
+import 'package:app/core/config/api.dart';
+import 'package:app/features/chart_of_accounts/model/category.dart';
+import 'package:app/features/chart_of_accounts/services/category.dart';
+import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class ChartOfAccountsController extends GetxController {
-  var number_of_players =
-      0.obs; // to trigger the app that something has changed
+  var isLoading = true.obs;
+  var list = <AccountsCategoryResult>[].obs;
+  var item = AccountsCategoryResult().obs;
+  @override
+  void onInit() {
+    getList();
+    super.onInit();
+  }
 
-  void updateNumber() {
-    log('$number_of_players');
+  void setItem(id) async {
+    item = id;
+  }
 
-    number_of_players.value = 1;
-    log('$number_of_players');
+  void getList() async {
+    try {
+      isLoading.value = true;
+      // var response = await AccountCategoryService.getList();
+      var response = await AccountCategoryService().getList(
+          APIURL.ACCOUNTING, 'api/account-category', accountCategoryFromJson);
+      if (response != null) {
+        list.value = response.results;
+      }
+    } finally {
+      isLoading.value = false;
+    }
   }
 }

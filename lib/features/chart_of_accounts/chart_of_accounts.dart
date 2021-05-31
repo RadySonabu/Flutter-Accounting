@@ -10,6 +10,7 @@ class ChartOfAccountsPage extends StatelessWidget {
       child: Scaffold(
         body: Container(
           child: ChartContent(),
+          // child: Text('asdf'),
         ),
       ),
     );

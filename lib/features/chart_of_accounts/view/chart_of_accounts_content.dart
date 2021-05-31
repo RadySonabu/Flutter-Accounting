@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:app/features/chart_of_accounts/controller/controller_chart_of_accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -8,20 +10,71 @@ class ChartContent extends StatelessWidget {
       Get.put(ChartOfAccountsController());
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Center(
-        child: Obx(() => Column(
-              children: [
-                Text(
-                    'This is the content of charts ${controller.number_of_players}'),
-                ElevatedButton(
-                    onPressed: () {
-                      controller.updateNumber();
+    var editingController;
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Flexible(
+              flex: 7,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: TextField(
+                  onChanged: (value) {
+                    log('$value');
+                  },
+                  controller: editingController,
+                  decoration: InputDecoration(
+                      labelText: "Search",
+                      hintText: "Search",
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(25.0)))),
+                ),
+              ),
+            ),
+          ],
+        ),
+        Expanded(
+          child: Obx(
+            () => ListView.separated(
+              separatorBuilder: (BuildContext context, int index) => Divider(
+                thickness: 2,
+              ),
+              itemCount: controller.list.length,
+              itemBuilder: (context, index) {
+                if (controller.isLoading.value) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else {
+                  return ListTile(
+                    title: Text(
+                        'VEHICLE ID: ${controller.list[index].name.toString()}'),
+                    subtitle: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                            'OWNER: ${controller.list[index].name.toString()} '),
+                        Text(
+                            'ORIGIN: ${controller.list[index].name.toString()} '),
+                      ],
+                    ),
+                    trailing: Icon(Icons.menu),
+                    onTap: () {
+                      // itemSelectedCallback(controller.list[index]);
+                      log('pressed');
                     },
-                    child: Text('change to 1'))
-              ],
-            )),
-      ),
+                    // selected: selectedItem == controller.list[index],
+                  );
+                }
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
