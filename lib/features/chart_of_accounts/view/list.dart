@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:app/features/chart_of_accounts/controller/controller_chart_of_accounts.dart';
+import 'package:app/features/chart_of_accounts/view/item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -52,7 +53,7 @@ class ChartContent extends StatelessWidget {
                 } else {
                   return ListTile(
                     title: Text(
-                        'VEHICLE ID: ${controller.list[index].name.toString()}'),
+                        'VEHICLE ID: ${controller.list[index].id.toString()}'),
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -65,7 +66,9 @@ class ChartContent extends StatelessWidget {
                     trailing: Icon(Icons.menu),
                     onTap: () {
                       // itemSelectedCallback(controller.list[index]);
-                      log('pressed');
+                      var id = controller.list[index].id;
+                      Get.to(() => SingleContent(), arguments: [id]);
+                      log('pressed ${controller.list[index].id}');
                     },
                     // selected: selectedItem == controller.list[index],
                   );
@@ -74,6 +77,9 @@ class ChartContent extends StatelessWidget {
             ),
           ),
         ),
+        // Expanded(
+        //     child:
+        //         Center(child: Text('this is the ${controller.item.value.id}'))),
       ],
     );
   }

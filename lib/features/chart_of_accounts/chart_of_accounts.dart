@@ -1,4 +1,4 @@
-import 'package:app/features/chart_of_accounts/view/chart_of_accounts_content.dart';
+import 'package:app/features/chart_of_accounts/view/list.dart';
 import 'package:flutter/material.dart';
 
 class ChartOfAccountsPage extends StatelessWidget {
