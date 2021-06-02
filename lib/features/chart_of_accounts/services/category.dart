@@ -37,7 +37,7 @@ class AccountCategoryService extends BaseCrudAPI {
   }
 
   @override
-  Future<AccountsCategoryResult> getItem(baseUrl, endpoint, modelSchema) {
+  Future getItem(baseUrl, endpoint, modelSchema) {
     // TODO: implement getItem
     return super.getItem(baseUrl, endpoint, modelSchema);
   }

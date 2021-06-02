@@ -10,7 +10,7 @@ class SingleContent extends StatelessWidget {
   final ChartOfAccountsController controller =
       Get.put(ChartOfAccountsController());
 
-  var data = Get.arguments;
+  var id = Get.arguments[0];
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +32,7 @@ class SingleContent extends StatelessWidget {
                       },
                       controller: editingController,
                       decoration: InputDecoration(
-                          labelText: "this is the new",
+                          labelText: "$id",
                           hintText: "Search",
                           prefixIcon: Icon(Icons.search),
                           border: OutlineInputBorder(
@@ -44,8 +44,19 @@ class SingleContent extends StatelessWidget {
               ],
             ),
             Expanded(
-                child: Obx(() => Center(
-                    child: Text('this is the ${controller.item.value.name}')))),
+              child: FutureBuilder<dynamic>(
+                future: controller.getItem(id),
+                builder: (context, snapshot) {
+                  log('snapshat has ${controller.isLoading.value}');
+                  log('controller ${controller.getItem(id)}');
+                  if (!snapshot.hasData) {
+                    return Center(child: CircularProgressIndicator());
+                  } else {
+                    return Text('this is the ${controller.item.value.name}');
+                  }
+                },
+              ),
+            ),
           ],
         ),
       ),

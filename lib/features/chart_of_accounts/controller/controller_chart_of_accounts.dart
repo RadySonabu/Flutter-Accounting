@@ -34,12 +34,13 @@ class ChartOfAccountsController extends GetxController {
   getItem(id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().getItem(APIURL.ACCOUNTING,
-          'api/account-category/$id', accountCategoryFromJson);
+      var response = await AccountCategoryService().getItem(
+          APIURL.ACCOUNTING, 'api/account-category/1', accountCategoryFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
       }
+      return response;
     } finally {
       isLoading.value = false;
     }
