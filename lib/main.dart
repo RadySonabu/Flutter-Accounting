@@ -1,3 +1,4 @@
+import 'package:app/core/routes/main_route.dart';
 import 'package:app/features/chart_of_accounts/chart_of_accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      getPages: AppPages.route,
       home: ChartOfAccountsPage(),
     );
   }

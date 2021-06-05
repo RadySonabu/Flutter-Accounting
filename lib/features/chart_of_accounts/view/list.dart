@@ -1,12 +1,16 @@
 import 'dart:developer';
 
 import 'package:app/features/chart_of_accounts/controller/controller_chart_of_accounts.dart';
+import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:app/features/chart_of_accounts/view/item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChartContent extends StatelessWidget {
-  ChartContent({Key key}) : super(key: key);
+  ChartContent({Key key, this.itemSelectedCallback, this.selectedItem})
+      : super(key: key);
+  final ValueChanged<AccountsCategoryResult> itemSelectedCallback;
+  final AccountsCategoryResult selectedItem;
   final ChartOfAccountsController controller =
       Get.put(ChartOfAccountsController());
   @override
@@ -66,8 +70,9 @@ class ChartContent extends StatelessWidget {
                     trailing: Icon(Icons.menu),
                     onTap: () {
                       // itemSelectedCallback(controller.list[index]);
-                      var id = controller.list[index].id;
-                      Get.to(() => SingleContent(), arguments: [id]);
+                      controller.setSelectedId(controller.list[index].id);
+                      var id = controller.selectedId;
+                      Get.toNamed('/coa/item', arguments: [id]);
                       log('pressed ${controller.list[index].id}');
                     },
                     // selected: selectedItem == controller.list[index],

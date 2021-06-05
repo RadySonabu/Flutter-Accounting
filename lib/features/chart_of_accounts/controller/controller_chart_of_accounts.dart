@@ -10,6 +10,7 @@ class ChartOfAccountsController extends GetxController {
   var isLoading = true.obs;
   var list = <AccountsCategoryResult>[].obs;
   var item = AccountsCategoryResult().obs;
+  var selectedId = 0.obs;
   // var id = 0.obs;
   // var item = <AccountsCategoryResult>[].obs;
   @override
@@ -34,8 +35,8 @@ class ChartOfAccountsController extends GetxController {
   getItem(id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, 'api/account-category/1', accountCategoryFromJson);
+      var response = await AccountCategoryService().getItem(APIURL.ACCOUNTING,
+          'api/account-category/$id', accountsCategoryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -44,5 +45,28 @@ class ChartOfAccountsController extends GetxController {
     } finally {
       isLoading.value = false;
     }
+  }
+
+  updateItem(map, id) async {
+    try {
+      isLoading.value = true;
+      var response = await AccountCategoryService().updateItem(
+          map,
+          APIURL.ACCOUNTING,
+          'api/account-category/3/',
+          accountsCategoryResultFromJson);
+      log(" the response on controller is $response");
+      if (response != null) {
+        // item.value = response;
+        log('$response');
+      }
+      return response;
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  setSelectedId(id) async {
+    selectedId.value = id;
   }
 }

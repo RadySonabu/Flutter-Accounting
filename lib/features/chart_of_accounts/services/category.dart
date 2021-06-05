@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:app/core/config/api.dart';
-import 'package:app/core/crud/list.dart';
+import 'package:app/core/crud/crud.dart';
 import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:http/http.dart' as http;
 
@@ -40,5 +40,11 @@ class AccountCategoryService extends BaseCrudAPI {
   Future getItem(baseUrl, endpoint, modelSchema) {
     // TODO: implement getItem
     return super.getItem(baseUrl, endpoint, modelSchema);
+  }
+
+  @override
+  Future updateItem(Map request, baseUrl, endpoint, modelSchema) {
+    // TODO: implement updateItem
+    return super.updateItem(request, baseUrl, endpoint, modelSchema);
   }
 }

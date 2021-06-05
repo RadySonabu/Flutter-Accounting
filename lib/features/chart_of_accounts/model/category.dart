@@ -7,6 +7,9 @@ import 'dart:convert';
 AccountCategory accountCategoryFromJson(String str) =>
     AccountCategory.fromJson(json.decode(str));
 
+AccountsCategoryResult accountsCategoryResultFromJson(String str) =>
+    AccountsCategoryResult.fromJson(json.decode(str));
+
 String accountCategoryToJson(AccountCategory data) =>
     json.encode(data.toJson());
 
