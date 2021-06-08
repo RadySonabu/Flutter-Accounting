@@ -9,6 +9,7 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReactiveTextField(
+      maxLines: null,
       formControlName: controlName,
       decoration: InputDecoration(
         hintText: hintText,

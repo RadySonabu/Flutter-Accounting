@@ -1,12 +1,7 @@
-import 'dart:convert';
-import 'dart:developer';
-
-import 'package:app/core/config/api.dart';
 import 'package:app/core/crud/crud.dart';
-import 'package:app/features/chart_of_accounts/model/category.dart';
-import 'package:http/http.dart' as http;
+import 'package:flutter/material.dart';
 
-class AccountCategoryService extends BaseCrudAPI {
+class EmployeeDeductionService extends BaseCrudAPI {
   @override
   Future getList(baseUrl, endpoint, modelSchema) {
     // TODO: implement getList

@@ -7,6 +7,9 @@ import 'dart:convert';
 JournalEntry journalEntryFromJson(String str) =>
     JournalEntry.fromJson(json.decode(str));
 
+JournalEntryResult journalEntryResultFromJson(String str) =>
+    JournalEntryResult.fromJson(json.decode(str));
+
 String journalEntryToJson(JournalEntry data) => json.encode(data.toJson());
 
 class JournalEntry {

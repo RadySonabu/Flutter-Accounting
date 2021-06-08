@@ -7,6 +7,9 @@ import 'dart:convert';
 AccountTitle accountTitleFromJson(String str) =>
     AccountTitle.fromJson(json.decode(str));
 
+AccountsTitleResult accountsTitleResultFromJson(String str) =>
+    AccountsTitleResult.fromJson(json.decode(str));
+
 String accountTitleToJson(AccountTitle data) => json.encode(data.toJson());
 
 class AccountTitle {

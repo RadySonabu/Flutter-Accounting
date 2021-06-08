@@ -50,17 +50,37 @@ class BaseCrudAPI {
       Map request, baseUrl, endpoint, modelSchema) async {
     var headers = {'Content-Type': 'application/json'};
     var uri = Uri.https(baseUrl, endpoint);
-    // print(request);
-    // var dataJson = {
-    //   'active_status': true,
-    //   'created_by': 'created by ardy',
-    //   'modified_by': 'ardy also',
-    //   'name': 'ardy',
-    //   'description': 'ardy desc'
-    // };
+
     var modelList;
     try {
       var response = await http.put(
+        uri,
+        headers: headers,
+        body: json.encode(request),
+      );
+      log('${response.statusCode}');
+      log('${response.reasonPhrase}');
+      if (response.statusCode == 200) {
+        // modelList = modelSchema(response.body);
+        // return modelSchema(response.body);
+        log('gumana');
+      }
+    } catch (Exception) {
+      log('$Exception');
+      log("Error occured");
+      return modelList;
+    }
+    return modelList;
+  }
+
+  Future<dynamic> createItem(
+      Map request, baseUrl, endpoint, modelSchema) async {
+    var headers = {'Content-Type': 'application/json'};
+    var uri = Uri.https(baseUrl, endpoint);
+
+    var modelList;
+    try {
+      var response = await http.post(
         uri,
         headers: headers,
         body: json.encode(request),

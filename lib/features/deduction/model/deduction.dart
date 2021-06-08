@@ -5,6 +5,8 @@
 import 'dart:convert';
 
 Deduction deductionFromJson(String str) => Deduction.fromJson(json.decode(str));
+DeductionResult deductionResultFromJson(String str) =>
+    DeductionResult.fromJson(json.decode(str));
 
 String deductionToJson(Deduction data) => json.encode(data.toJson());
 

@@ -1,22 +1,22 @@
 import 'dart:developer';
 
-import 'package:app/features/chart_of_accounts/controller/controller_chart_of_accounts.dart';
+import 'package:app/features/app.dart';
+import 'package:app/features/chart_of_accounts/controller/category.dart';
 import 'package:app/features/chart_of_accounts/model/category.dart';
-import 'package:app/features/chart_of_accounts/view/update.dart';
+import 'package:app/features/chart_of_accounts/view/category/update.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SingleContent extends StatelessWidget {
   SingleContent({Key key, this.item}) : super(key: key);
-  final ChartOfAccountsController controller =
-      Get.put(ChartOfAccountsController());
+  final COACategoryController controller = Get.put(COACategoryController());
 
   final AccountsCategoryResult item;
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: FutureBuilder<dynamic>(
+    return new BasePage(
+      content: Container(
+        child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),
           builder: (context, snapshot) {
             log('snapshat has ${controller.isLoading.value}');
@@ -31,7 +31,10 @@ class SingleContent extends StatelessWidget {
                     ElevatedButton(
                         onPressed: () {
                           print('pressed');
-                          Get.to(() => COAUpdate());
+                          Get.toNamed('/coa-category/update', arguments: [
+                            controller.item.value.name,
+                            controller.item.value.description
+                          ]);
                         },
                         child: Text('Update'))
                   ],

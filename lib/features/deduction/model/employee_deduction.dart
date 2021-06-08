@@ -6,7 +6,8 @@ import 'dart:convert';
 
 EmployeeDeduction employeeDeductionFromJson(String str) =>
     EmployeeDeduction.fromJson(json.decode(str));
-
+EmployeeDeductionResult employeeDeductionResultFromJson(String str) =>
+    EmployeeDeductionResult.fromJson(json.decode(str));
 String employeeDeductionToJson(EmployeeDeduction data) =>
     json.encode(data.toJson());
 

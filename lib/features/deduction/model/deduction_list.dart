@@ -7,6 +7,9 @@ import 'dart:convert';
 DeductionList deductionListFromJson(String str) =>
     DeductionList.fromJson(json.decode(str));
 
+DeductionListResult deductionListResultFromJson(String str) =>
+    DeductionListResult.fromJson(json.decode(str));
+
 String deductionListToJson(DeductionList data) => json.encode(data.toJson());
 
 class DeductionList {

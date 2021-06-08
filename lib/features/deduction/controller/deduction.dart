@@ -3,16 +3,18 @@ import 'dart:developer';
 import 'package:app/core/config/api.dart';
 import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:app/features/chart_of_accounts/services/category.dart';
+import 'package:app/features/deduction/model/deduction.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
-class ChartOfAccountsController extends GetxController {
+class DeductionController extends GetxController {
+  var endpoint = 'api/deduction';
+
   var isLoading = true.obs;
-  var list = <AccountsCategoryResult>[].obs;
-  var item = AccountsCategoryResult().obs;
+  var list = <DeductionResult>[].obs;
+  var item = DeductionResult().obs;
   var selectedId = 0.obs;
-  // var id = 0.obs;
-  // var item = <AccountsCategoryResult>[].obs;
+
   @override
   void onInit() {
     getList();
@@ -22,8 +24,8 @@ class ChartOfAccountsController extends GetxController {
   void getList() async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().getList(
-          APIURL.ACCOUNTING, 'api/account-category', accountCategoryFromJson);
+      var response = await AccountCategoryService()
+          .getList(APIURL.ACCOUNTING, '$endpoint', accountCategoryFromJson);
       if (response != null) {
         list.value = response.results;
       }
@@ -35,8 +37,8 @@ class ChartOfAccountsController extends GetxController {
   getItem(id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().getItem(APIURL.ACCOUNTING,
-          'api/account-category/$id', accountsCategoryResultFromJson);
+      var response = await AccountCategoryService().getItem(
+          APIURL.ACCOUNTING, '$endpoint/$id', accountsCategoryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -47,14 +49,32 @@ class ChartOfAccountsController extends GetxController {
     }
   }
 
+  createItem(map) async {
+    try {
+      isLoading.value = true;
+      var response = await AccountCategoryService().createItem(
+        map,
+        APIURL.ACCOUNTING,
+        '$endpoint',
+        accountsCategoryResultFromJson,
+      );
+      log(" the response on controller is $response");
+      if (response != null) {
+        item.value = response;
+      }
+      return response;
+    } finally {
+      isLoading.value = false;
+      getList();
+      Get.toNamed('/coa-category');
+    }
+  }
+
   updateItem(map, id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().updateItem(
-          map,
-          APIURL.ACCOUNTING,
-          'api/account-category/3/',
-          accountsCategoryResultFromJson);
+      var response = await AccountCategoryService().updateItem(map,
+          APIURL.ACCOUNTING, '$endpoint/$id/', accountsCategoryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;
@@ -63,6 +83,8 @@ class ChartOfAccountsController extends GetxController {
       return response;
     } finally {
       isLoading.value = false;
+      getList();
+      Get.toNamed('/coa-category');
     }
   }
 

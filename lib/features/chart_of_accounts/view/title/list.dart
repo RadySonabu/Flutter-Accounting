@@ -1,35 +1,30 @@
 import 'dart:developer';
 
-import 'package:app/features/chart_of_accounts/controller/controller_chart_of_accounts.dart';
-import 'package:app/features/chart_of_accounts/model/category.dart';
-import 'package:app/features/chart_of_accounts/view/item.dart';
+import 'package:app/features/app.dart';
+import 'package:app/features/chart_of_accounts/controller/title.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ChartContent extends StatelessWidget {
-  ChartContent({Key key, this.itemSelectedCallback, this.selectedItem})
-      : super(key: key);
-  final ValueChanged<AccountsCategoryResult> itemSelectedCallback;
-  final AccountsCategoryResult selectedItem;
-  final ChartOfAccountsController controller =
-      Get.put(ChartOfAccountsController());
+class COATitlePage extends StatelessWidget {
+  COATitlePage({Key key}) : super(key: key);
+  final COATitleController controller = Get.put(COATitleController());
+
   @override
   Widget build(BuildContext context) {
-    var editingController;
-    return Column(
+    return BasePage(
+        content: Column(
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Flexible(
-              flex: 7,
+            Expanded(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextField(
                   onChanged: (value) {
                     log('$value');
                   },
-                  controller: editingController,
+                  // controller: editingController,
                   decoration: InputDecoration(
                       labelText: "Search",
                       hintText: "Search",
@@ -38,6 +33,15 @@ class ChartContent extends StatelessWidget {
                           borderRadius:
                               BorderRadius.all(Radius.circular(25.0)))),
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Get.toNamed('/coa-title/create');
+                },
+                child: Text('+'),
               ),
             ),
           ],
@@ -62,9 +66,9 @@ class ChartContent extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                            'OWNER: ${controller.list[index].name.toString()} '),
+                            'OWNER: ${controller.list[index].titles.toString()} '),
                         Text(
-                            'ORIGIN: ${controller.list[index].name.toString()} '),
+                            'ORIGIN: ${controller.list[index].accountCode.toString()} '),
                       ],
                     ),
                     trailing: Icon(Icons.menu),
@@ -72,7 +76,7 @@ class ChartContent extends StatelessWidget {
                       // itemSelectedCallback(controller.list[index]);
                       controller.setSelectedId(controller.list[index].id);
                       var id = controller.selectedId;
-                      Get.toNamed('/coa/item', arguments: [id]);
+                      Get.toNamed('/coa-title/item', arguments: [id]);
                       log('pressed ${controller.list[index].id}');
                     },
                     // selected: selectedItem == controller.list[index],
@@ -82,10 +86,7 @@ class ChartContent extends StatelessWidget {
             ),
           ),
         ),
-        // Expanded(
-        //     child:
-        //         Center(child: Text('this is the ${controller.item.value.id}'))),
       ],
-    );
+    ));
   }
 }
