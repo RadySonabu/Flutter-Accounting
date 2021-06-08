@@ -25,7 +25,7 @@ class DeductionController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService()
-          .getList(APIURL.ACCOUNTING, '$endpoint', accountCategoryFromJson);
+          .getList(APIURL.ACCOUNTING, '$endpoint', deductionFromJson);
       if (response != null) {
         list.value = response.results;
       }
@@ -37,8 +37,8 @@ class DeductionController extends GetxController {
   getItem(id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', accountsCategoryResultFromJson);
+      var response = await AccountCategoryService()
+          .getItem(APIURL.ACCOUNTING, '$endpoint/$id', deductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -56,7 +56,7 @@ class DeductionController extends GetxController {
         map,
         APIURL.ACCOUNTING,
         '$endpoint',
-        accountsCategoryResultFromJson,
+        deductionResultFromJson,
       );
       log(" the response on controller is $response");
       if (response != null) {
@@ -73,8 +73,8 @@ class DeductionController extends GetxController {
   updateItem(map, id) async {
     try {
       isLoading.value = true;
-      var response = await AccountCategoryService().updateItem(map,
-          APIURL.ACCOUNTING, '$endpoint/$id/', accountsCategoryResultFromJson);
+      var response = await AccountCategoryService().updateItem(
+          map, APIURL.ACCOUNTING, '$endpoint/$id/', deductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;

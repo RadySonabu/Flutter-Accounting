@@ -4,6 +4,7 @@ import 'package:app/core/config/api.dart';
 import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:app/features/chart_of_accounts/services/category.dart';
 import 'package:app/features/deduction/model/deduction.dart';
+import 'package:app/features/deduction/model/deduction_list.dart';
 import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
@@ -11,8 +12,8 @@ class DeductionListController extends GetxController {
   var endpoint = 'api/employee-deduction-list';
 
   var isLoading = true.obs;
-  var list = <DeductionResult>[].obs;
-  var item = DeductionResult().obs;
+  var list = <DeductionListResult>[].obs;
+  var item = DeductionListResult().obs;
   var selectedId = 0.obs;
 
   @override
@@ -25,7 +26,7 @@ class DeductionListController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService()
-          .getList(APIURL.ACCOUNTING, '$endpoint', accountCategoryFromJson);
+          .getList(APIURL.ACCOUNTING, '$endpoint', deductionListFromJson);
       if (response != null) {
         list.value = response.results;
       }
@@ -38,7 +39,7 @@ class DeductionListController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', accountsCategoryResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint/$id', deductionListResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -56,7 +57,7 @@ class DeductionListController extends GetxController {
         map,
         APIURL.ACCOUNTING,
         '$endpoint',
-        accountsCategoryResultFromJson,
+        deductionListResultFromJson,
       );
       log(" the response on controller is $response");
       if (response != null) {
@@ -74,7 +75,7 @@ class DeductionListController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().updateItem(map,
-          APIURL.ACCOUNTING, '$endpoint/$id/', accountsCategoryResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint/$id/', deductionListResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;
