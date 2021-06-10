@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 class COACategoryController extends GetxController {
   var endpoint = 'api/account-category';
+  var redirect = '/coa-category';
   var isLoading = true.obs;
   var list = <AccountsCategoryResult>[].obs;
   var item = AccountsCategoryResult().obs;
@@ -64,7 +65,7 @@ class COACategoryController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 
@@ -82,7 +83,7 @@ class COACategoryController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 

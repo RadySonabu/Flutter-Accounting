@@ -11,7 +11,7 @@ import 'package:get/get.dart';
 class COATitleController extends GetxController {
   // * URL
   var endpoint = 'api/account-titles';
-
+  var redirect = '/coa-title';
   var isLoading = true.obs;
   var list = <AccountsTitleResult>[].obs;
   var item = AccountsTitleResult().obs;
@@ -68,6 +68,8 @@ class COATitleController extends GetxController {
       return response;
     } finally {
       isLoading.value = false;
+      getList();
+      Get.toNamed('$redirect');
     }
   }
 
@@ -84,6 +86,8 @@ class COATitleController extends GetxController {
       return response;
     } finally {
       isLoading.value = false;
+      getList();
+      Get.toNamed('$redirect');
     }
   }
 

@@ -26,8 +26,6 @@ class COATitleUpdateForm extends StatelessWidget {
     COATitleController controller = Get.put(COATitleController());
     return Container(
       child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        reverse: true,
         child: ReactiveForm(
             formGroup: coaForm,
             child: Column(

@@ -9,6 +9,7 @@ class COATitleUpdate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      pagetitle: 'Chart Title',
       content: Padding(
         padding: const EdgeInsets.all(8.0),
         child: COATitleUpdateForm(),

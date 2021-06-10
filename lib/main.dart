@@ -1,6 +1,5 @@
 import 'package:app/core/routes/main_route.dart';
 import 'package:app/features/app.dart';
-import 'package:app/features/chart_of_accounts/chart_of_accounts.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +13,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
+      transitionDuration: Duration(seconds: 0),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.deepPurple,
       ),
       getPages: AppPages.route,
       home: BasePage(),

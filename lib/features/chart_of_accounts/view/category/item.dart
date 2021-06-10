@@ -8,13 +8,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SingleContent extends StatelessWidget {
-  SingleContent({Key key, this.item}) : super(key: key);
+  SingleContent({Key key}) : super(key: key);
   final COACategoryController controller = Get.put(COACategoryController());
 
-  final AccountsCategoryResult item;
+  // final AccountsCategoryResult item;
   @override
   Widget build(BuildContext context) {
     return new BasePage(
+      pagetitle: 'Chart Category',
       content: Container(
         child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),

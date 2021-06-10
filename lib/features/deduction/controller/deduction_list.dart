@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 class DeductionListController extends GetxController {
   var endpoint = 'api/employee-deduction-list';
-
+  var redirect = '/coa-category';
   var isLoading = true.obs;
   var list = <DeductionListResult>[].obs;
   var item = DeductionListResult().obs;

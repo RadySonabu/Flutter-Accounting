@@ -26,6 +26,7 @@ class DeductionController extends GetxController {
       isLoading.value = true;
       var response = await AccountCategoryService()
           .getList(APIURL.ACCOUNTING, '$endpoint', deductionFromJson);
+      print(response);
       if (response != null) {
         list.value = response.results;
       }

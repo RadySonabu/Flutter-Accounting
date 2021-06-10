@@ -10,9 +10,10 @@ class COACategoryCreate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+        pagetitle: 'Chart Category',
         content: Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: COACategoryCreateForm(),
-    ));
+          padding: const EdgeInsets.all(8.0),
+          child: COACategoryCreateForm(),
+        ));
   }
 }

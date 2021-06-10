@@ -1,9 +1,11 @@
+import 'package:app/core/widgets/drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class BasePage extends StatelessWidget {
-  const BasePage({Key key, this.content}) : super(key: key);
+  const BasePage({Key key, this.content, this.pagetitle}) : super(key: key);
   final Widget content;
+  final String pagetitle;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -13,37 +15,24 @@ class BasePage extends StatelessWidget {
           title: Text('Payroll'),
           elevation: 0,
         ),
-        drawer: Drawer(
-          // Add a ListView to the drawer. This ensures the user can scroll
-          // through the options in the drawer if there isn't enough vertical
-          // space to fit everything.
-          child: ListView(
-            // Important: Remove any padding from the ListView.
-            padding: EdgeInsets.zero,
-            children: <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                ),
-                child: Text('Drawer Header'),
+        drawer: MyDrawer(),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Text(
+                '$pagetitle',
+                textAlign: TextAlign.left,
+                textScaleFactor: 3,
               ),
-              ListTile(
-                title: Text('Category'),
-                onTap: () {
-                  Get.toNamed('/coa-category');
-                },
-              ),
-              ListTile(
-                title: Text('Title'),
-                onTap: () {
-                  Get.toNamed('/coa-title');
-                },
-              ),
-            ],
-          ),
-        ),
-        body: Container(
-          child: content,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 16.0),
+              child: Text('Payrool / $pagetitle'),
+            ),
+            Expanded(child: content != null ? content : Container()),
+          ],
         ),
       ),
     );

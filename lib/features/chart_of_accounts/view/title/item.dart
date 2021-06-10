@@ -16,6 +16,7 @@ class COATitleItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      pagetitle: 'Chart Title',
       content: FutureBuilder<dynamic>(
         future: controller.getItem(controller.selectedId),
         builder: (context, snapshot) {

@@ -13,7 +13,7 @@ class BaseCrudAPI {
     var modelList;
     try {
       var response = await client.get(uri);
-      // log('${response.statusCode}');
+      log('${response.statusCode}');
       if (response.statusCode == 200) {
         modelList = modelSchema(response.body);
       }

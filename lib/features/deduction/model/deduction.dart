@@ -59,7 +59,7 @@ class DeductionResult {
   DateTime dateModified;
   String name;
   int employeeDeductionList;
-  int amount;
+  double amount;
   String description;
 
   factory DeductionResult.fromJson(Map<String, dynamic> json) =>
@@ -71,7 +71,7 @@ class DeductionResult {
         dateModified: DateTime.parse(json["date_modified"]),
         name: json["name"],
         employeeDeductionList: json["employee_deduction_list"],
-        amount: json["amount"],
+        amount: json["amount"].toDouble(),
         description: json["description"],
       );
 

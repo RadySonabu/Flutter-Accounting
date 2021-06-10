@@ -16,7 +16,8 @@ class ChartContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var editingController;
-    return new BasePage(
+    return BasePage(
+      pagetitle: 'Chart Category',
       content: Column(
         children: [
           Row(
