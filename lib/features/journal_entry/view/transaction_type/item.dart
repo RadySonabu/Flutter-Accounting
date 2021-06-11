@@ -6,18 +6,17 @@ import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:app/features/chart_of_accounts/view/category/update.dart';
 import 'package:app/features/deduction/controller/deduction.dart';
 import 'package:app/features/journal_entry/controller/detail.dart';
-import 'package:app/features/journal_entry/controller/entry.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class JournalEntryItemPage extends StatelessWidget {
-  JournalEntryItemPage({Key key}) : super(key: key);
-  final JEEntryController controller = Get.put(JEEntryController());
+class JournalTransactionTypeItemPage extends StatelessWidget {
+  JournalTransactionTypeItemPage({Key key}) : super(key: key);
+  final JEDetailController controller = Get.put(JEDetailController());
 
   @override
   Widget build(BuildContext context) {
     return new BasePage(
-      pagetitle: 'Journal Entry',
+      pagetitle: 'Journal Transaction Type',
       content: Container(
         child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),

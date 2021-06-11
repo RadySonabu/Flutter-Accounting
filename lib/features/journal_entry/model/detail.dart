@@ -6,8 +6,10 @@ import 'dart:convert';
 
 JournalEntryDetails journalEntryDetailsFromJson(String str) =>
     JournalEntryDetails.fromJson(json.decode(str));
+
 JournalEntryDetailsResult journalEntryDetailsResultFromJson(String str) =>
     JournalEntryDetailsResult.fromJson(json.decode(str));
+
 String journalEntryDetailsToJson(JournalEntryDetails data) =>
     json.encode(data.toJson());
 
@@ -62,7 +64,7 @@ class JournalEntryDetailsResult {
   int entryNumber;
   int accountCodeId;
   int transactionType;
-  int transactionAmount;
+  double transactionAmount;
 
   factory JournalEntryDetailsResult.fromJson(Map<String, dynamic> json) =>
       JournalEntryDetailsResult(
@@ -74,7 +76,7 @@ class JournalEntryDetailsResult {
         entryNumber: json["entry_number"],
         accountCodeId: json["account_code_id"],
         transactionType: json["transaction_type"],
-        transactionAmount: json["transaction_amount"],
+        transactionAmount: json["transaction_amount"].toDouble(),
       );
 
   Map<String, dynamic> toJson() => {

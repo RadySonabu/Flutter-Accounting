@@ -20,8 +20,10 @@ import 'package:app/features/deduction/view/employee_deduction/create.dart';
 import 'package:app/features/deduction/view/employee_deduction/item.dart';
 import 'package:app/features/deduction/view/employee_deduction/list.dart';
 import 'package:app/features/deduction/view/employee_deduction/update.dart';
+import 'package:app/features/journal_entry/model/transaction_type.dart';
 import 'package:app/features/journal_entry/view/detail/list.dart';
 import 'package:app/features/journal_entry/view/entry/list.dart';
+import 'package:app/features/journal_entry/view/transaction_type/list.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
@@ -74,6 +76,13 @@ class AppPages {
     // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
 
     GetPage(name: '/journal-entry', page: () => JournalEntryListPage()),
+    // GetPage(name: '/deduction/item', page: () => COATitleItem()),
+    // GetPage(name: '/deduction/create', page: () => COATitleCreate()),
+    // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
+
+    GetPage(
+        name: '/journal-transaction-type',
+        page: () => JournalTransactionTypeListPage()),
     // GetPage(name: '/deduction/item', page: () => COATitleItem()),
     // GetPage(name: '/deduction/create', page: () => COATitleCreate()),
     // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
