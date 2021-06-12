@@ -74,15 +74,15 @@ class MyDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                title: Text('Transaction Type'),
-                onTap: () {
-                  Get.toNamed('/journal-transaction-type');
-                },
-              ),
-              ListTile(
                 title: Text('Entry'),
                 onTap: () {
                   Get.toNamed('/journal-entry');
+                },
+              ),
+              ListTile(
+                title: Text('Transaction Type'),
+                onTap: () {
+                  Get.toNamed('/journal-transaction-type');
                 },
               ),
             ],

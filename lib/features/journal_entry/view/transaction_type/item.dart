@@ -6,12 +6,14 @@ import 'package:app/features/chart_of_accounts/model/category.dart';
 import 'package:app/features/chart_of_accounts/view/category/update.dart';
 import 'package:app/features/deduction/controller/deduction.dart';
 import 'package:app/features/journal_entry/controller/detail.dart';
+import 'package:app/features/journal_entry/controller/transaction_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class JournalTransactionTypeItemPage extends StatelessWidget {
   JournalTransactionTypeItemPage({Key key}) : super(key: key);
-  final JEDetailController controller = Get.put(JEDetailController());
+  final JETransactionTypeController controller =
+      Get.put(JETransactionTypeController());
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class JournalTransactionTypeItemPage extends StatelessWidget {
               return Center(
                 child: Column(
                   children: [
-                    Text('this is the ${controller.item.value.entryNumber}'),
+                    Text('this is the ${controller.item.value.name}'),
                     ElevatedButton(
                         onPressed: () {
                           print('pressed');

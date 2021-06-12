@@ -21,9 +21,18 @@ import 'package:app/features/deduction/view/employee_deduction/item.dart';
 import 'package:app/features/deduction/view/employee_deduction/list.dart';
 import 'package:app/features/deduction/view/employee_deduction/update.dart';
 import 'package:app/features/journal_entry/model/transaction_type.dart';
+import 'package:app/features/journal_entry/view/detail/create.dart';
+import 'package:app/features/journal_entry/view/detail/item.dart';
 import 'package:app/features/journal_entry/view/detail/list.dart';
+import 'package:app/features/journal_entry/view/detail/update.dart';
+import 'package:app/features/journal_entry/view/entry/create.dart';
+import 'package:app/features/journal_entry/view/entry/item.dart';
 import 'package:app/features/journal_entry/view/entry/list.dart';
+import 'package:app/features/journal_entry/view/entry/update.dart';
+import 'package:app/features/journal_entry/view/transaction_type/create.dart';
+import 'package:app/features/journal_entry/view/transaction_type/item.dart';
 import 'package:app/features/journal_entry/view/transaction_type/list.dart';
+import 'package:app/features/journal_entry/view/transaction_type/update.dart';
 import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
@@ -71,21 +80,31 @@ class AppPages {
         page: () => EmployeeDeductionUpdatePage()),
 
     GetPage(name: '/journal-detail', page: () => JournalDetailListPage()),
-    // GetPage(name: '/deduction/item', page: () => COATitleItem()),
-    // GetPage(name: '/deduction/create', page: () => COATitleCreate()),
-    // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
+    GetPage(name: '/journal-detail/item', page: () => JournalDetailsItemPage()),
+    GetPage(
+        name: '/journal-detail/create', page: () => JournalDetailCreatePage()),
+    GetPage(
+        name: '/journal-detail/update', page: () => JournalDetailUpdatePage()),
 
     GetPage(name: '/journal-entry', page: () => JournalEntryListPage()),
-    // GetPage(name: '/deduction/item', page: () => COATitleItem()),
-    // GetPage(name: '/deduction/create', page: () => COATitleCreate()),
-    // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
+    GetPage(name: '/journal-entry/item', page: () => JournalEntryItemPage()),
+    GetPage(
+        name: '/journal-entry/create', page: () => JournalEntryCreatePage()),
+    GetPage(
+        name: '/journal-entry/update', page: () => JournalEntryUpdatePage()),
 
     GetPage(
         name: '/journal-transaction-type',
         page: () => JournalTransactionTypeListPage()),
-    // GetPage(name: '/deduction/item', page: () => COATitleItem()),
-    // GetPage(name: '/deduction/create', page: () => COATitleCreate()),
-    // GetPage(name: '/deduction/update', page: () => COATitleUpdate()),
+    GetPage(
+        name: '/journal-transaction-type/item',
+        page: () => JournalTransactionTypeItemPage()),
+    GetPage(
+        name: '/journal-transaction-type/create',
+        page: () => JournalTransactionTypeCreatePage()),
+    GetPage(
+        name: '/journal-transaction-type/update',
+        page: () => JournalTransactionTypeUpdatePage()),
 
     // ...VLRouter.route
   ];

@@ -1,5 +1,6 @@
 import 'package:app/features/app.dart';
 import 'package:app/features/deduction/form/deduction/create.dart';
+import 'package:app/features/journal_entry/form/detail/create.dart';
 import 'package:flutter/material.dart';
 
 class JournalDetailCreatePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class JournalDetailCreatePage extends StatelessWidget {
         pagetitle: 'Journal Detail',
         content: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: DeductioCreateForm(),
+          child: JournalEntryDetailsCreateForm(),
         ));
   }
 }

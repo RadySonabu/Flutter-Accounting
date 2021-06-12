@@ -76,7 +76,7 @@ class JournalEntryListPage extends StatelessWidget {
                         // itemSelectedCallback(controller.list[index]);
                         controller.setSelectedId(controller.list[index].id);
                         var id = controller.selectedId;
-                        Get.toNamed('/coa-category/item', arguments: [id]);
+                        Get.toNamed('/journal-entry/item', arguments: [id]);
                         log('pressed ${controller.list[index].id}');
                       },
                       // selected: selectedItem == controller.list[index],
