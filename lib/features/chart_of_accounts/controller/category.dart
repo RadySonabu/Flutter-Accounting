@@ -7,7 +7,7 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class COACategoryController extends GetxController {
-  var endpoint = 'api/account-category';
+  var endpoint = 'api/account-category/';
   var redirect = '/coa-category';
   var isLoading = true.obs;
   var list = <AccountsCategoryResult>[].obs;
@@ -37,7 +37,7 @@ class COACategoryController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', accountsCategoryResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id', accountsCategoryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -73,7 +73,7 @@ class COACategoryController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().updateItem(map,
-          APIURL.ACCOUNTING, '$endpoint/$id/', accountsCategoryResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id/', accountsCategoryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;

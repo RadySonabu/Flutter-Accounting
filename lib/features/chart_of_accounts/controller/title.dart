@@ -10,7 +10,7 @@ import 'package:get/get.dart';
 
 class COATitleController extends GetxController {
   // * URL
-  var endpoint = 'api/account-titles';
+  var endpoint = 'api/account-titles/';
   var redirect = '/coa-title';
   var isLoading = true.obs;
   var list = <AccountsTitleResult>[].obs;
@@ -59,7 +59,7 @@ class COATitleController extends GetxController {
         map,
         APIURL.ACCOUNTING,
         '$endpoint',
-        accountsCategoryResultFromJson,
+        accountsTitleResultFromJson,
       );
       log(" the response on controller is $response");
       if (response != null) {

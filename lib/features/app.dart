@@ -22,14 +22,16 @@ class BasePage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                '$pagetitle',
+                pagetitle != null ? '$pagetitle' : '',
                 textAlign: TextAlign.left,
                 textScaleFactor: 3,
               ),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 16.0),
-              child: Text('Payrool / $pagetitle'),
+              child: pagetitle != null
+                  ? Text('Payroll / $pagetitle')
+                  : Container(),
             ),
             Expanded(child: content != null ? content : Container()),
           ],

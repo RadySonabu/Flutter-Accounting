@@ -9,8 +9,8 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class EmployeeDeductionController extends GetxController {
-  var endpoint = 'api/employee-deduction';
-
+  var endpoint = 'api/employee-deduction/';
+  var redirect = '/deduction-employee';
   var isLoading = true.obs;
   var list = <EmployeeDeductionResult>[].obs;
   var item = EmployeeDeductionResult().obs;
@@ -39,7 +39,7 @@ class EmployeeDeductionController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', employeeDeductionResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id', employeeDeductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -67,7 +67,7 @@ class EmployeeDeductionController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 
@@ -75,7 +75,7 @@ class EmployeeDeductionController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().updateItem(map,
-          APIURL.ACCOUNTING, '$endpoint/$id/', employeeDeductionResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id/', employeeDeductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;
@@ -85,7 +85,7 @@ class EmployeeDeductionController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 

@@ -29,15 +29,37 @@ class SingleContent extends StatelessWidget {
                 child: Column(
                   children: [
                     Text('this is the ${controller.item.value.name}'),
-                    ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                          Get.toNamed('/coa-category/update', arguments: [
-                            controller.item.value.name,
-                            controller.item.value.description
-                          ]);
-                        },
-                        child: Text('Update'))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            print('pressed');
+                            Get.toNamed('/coa-category/update', arguments: [
+                              controller.item.value.name,
+                              controller.item.value.description
+                            ]);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                          ),
+                          child: Text('Update'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () async {
+                            Get.toNamed('/coa-category');
+                          },
+                          style: ElevatedButton.styleFrom(
+                            shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30.0),
+                            ),
+                          ),
+                          child: Text('Cancel'),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               );

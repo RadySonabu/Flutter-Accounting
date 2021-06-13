@@ -80,13 +80,14 @@ class BaseCrudAPI {
 
     var modelList;
     try {
+      log('${json.encode(request)}');
       var response = await http.post(
         uri,
         headers: headers,
         body: json.encode(request),
       );
-      log('${response.statusCode}');
-      log('${response.reasonPhrase}');
+      log('sa create ${response.statusCode}');
+      log('sa create ${response.reasonPhrase}');
       if (response.statusCode == 200) {
         // modelList = modelSchema(response.body);
         // return modelSchema(response.body);

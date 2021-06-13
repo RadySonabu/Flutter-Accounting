@@ -8,8 +8,8 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class DeductionController extends GetxController {
-  var endpoint = 'api/deduction';
-
+  var endpoint = 'api/deduction/';
+  var redirect = '/deduction';
   var isLoading = true.obs;
   var list = <DeductionResult>[].obs;
   var item = DeductionResult().obs;
@@ -39,7 +39,7 @@ class DeductionController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService()
-          .getItem(APIURL.ACCOUNTING, '$endpoint/$id', deductionResultFromJson);
+          .getItem(APIURL.ACCOUNTING, '$endpoint$id', deductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -67,7 +67,7 @@ class DeductionController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 
@@ -75,7 +75,7 @@ class DeductionController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().updateItem(
-          map, APIURL.ACCOUNTING, '$endpoint/$id/', deductionResultFromJson);
+          map, APIURL.ACCOUNTING, '$endpoint$id/', deductionResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;
@@ -85,7 +85,7 @@ class DeductionController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 

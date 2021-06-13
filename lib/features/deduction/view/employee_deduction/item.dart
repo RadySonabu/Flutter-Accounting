@@ -11,11 +11,12 @@ class EmployeeDeductionItemPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new BasePage(
+      pagetitle: 'Employee Deduction',
       content: Container(
         child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),
           builder: (context, snapshot) {
-            if (!snapshot.hasData) {
+            if (controller.isLoading.value) {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(

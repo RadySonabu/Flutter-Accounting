@@ -13,11 +13,11 @@ class DeductionTypeItemPage extends StatelessWidget {
       pagetitle: 'Deduction Type',
       content: Container(
         child: FutureBuilder<dynamic>(
-          future: controller.getItem(controller.selectedId),
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return Center(child: CircularProgressIndicator());
-            } else {
+            future: controller.getItem(controller.selectedId),
+            builder: (context, snapshot) {
+              // if (!snapshot.hasData) {
+              //   return Center(child: CircularProgressIndicator());
+              // } else {
               return Center(
                 child: Column(
                   children: [
@@ -32,8 +32,8 @@ class DeductionTypeItemPage extends StatelessWidget {
                 ),
               );
             }
-          },
-        ),
+            // },
+            ),
       ),
     );
   }

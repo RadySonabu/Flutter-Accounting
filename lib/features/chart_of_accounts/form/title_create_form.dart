@@ -15,7 +15,7 @@ class COATitleCreateForm extends StatelessWidget {
     "active_status": FormControl(value: true),
     "created_by": FormControl<String>(value: 'admin'),
     "modified_by": FormControl<String>(value: 'admin'),
-    "account_category_id": FormControl(),
+    "account_category_id": FormControl<int>(),
     "account_code": FormControl<String>(),
     "titles": FormControl<String>(),
     "description": FormControl<String>()
@@ -65,8 +65,10 @@ class COATitleCreateForm extends StatelessWidget {
                 return ElevatedButton(
                   onPressed: () async {
                     // print('asdf');
-                    // controller.updateItem(
-                    //     form.value, controller.selectedId.value);
+                    log('${form.value}');
+
+                    controller.createItem(form.value);
+
                     // print(
                     //     'the value passed to controller is: ${json.encode(form.value)}');
                     // print('the value passed to controller is: ${form.value}');

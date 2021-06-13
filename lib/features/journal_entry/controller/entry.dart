@@ -9,8 +9,8 @@ import 'package:get/state_manager.dart';
 import 'package:get/get.dart';
 
 class JEEntryController extends GetxController {
-  var endpoint = 'api/journal-entry';
-
+  var endpoint = 'api/journal-entry/';
+  var redirect = '/journal-entry';
   var isLoading = true.obs;
   var list = <JournalEntryResult>[].obs;
   var item = JournalEntryResult().obs;
@@ -39,7 +39,7 @@ class JEEntryController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', journalEntryResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id', journalEntryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -67,7 +67,7 @@ class JEEntryController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 
@@ -75,7 +75,7 @@ class JEEntryController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountCategoryService().updateItem(
-          map, APIURL.ACCOUNTING, '$endpoint/$id/', journalEntryResultFromJson);
+          map, APIURL.ACCOUNTING, '$endpoint$id/', journalEntryResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;
@@ -85,7 +85,7 @@ class JEEntryController extends GetxController {
     } finally {
       isLoading.value = false;
       getList();
-      Get.toNamed('/coa-category');
+      Get.toNamed('$redirect');
     }
   }
 
