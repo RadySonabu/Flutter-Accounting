@@ -40,7 +40,7 @@ class JournalTransactionTypeListPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed('/coa-title/create');
+                    Get.toNamed('/journal-transaction-type/create');
                   },
                   child: Text('+'),
                 ),

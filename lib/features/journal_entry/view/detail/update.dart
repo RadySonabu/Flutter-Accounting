@@ -12,7 +12,7 @@ class JournalDetailUpdatePage extends StatelessWidget {
         pagetitle: 'Journal Detail',
         content: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: JournalEntryDetailsUpdateForm(),
+          child: SingleChildScrollView(child: JournalEntryDetailsUpdateForm()),
         ));
   }
 }

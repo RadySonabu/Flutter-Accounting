@@ -39,7 +39,7 @@ class JournalDetailListPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed('/deduction-employee/create');
+                    Get.toNamed('/journal-detail/create');
                   },
                   child: Text('+'),
                 ),

@@ -20,9 +20,7 @@ class SingleContent extends StatelessWidget {
         child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),
           builder: (context, snapshot) {
-            log('snapshat has ${controller.isLoading.value}');
-            log('controller ${controller.getItem(controller.selectedId)}');
-            if (!snapshot.hasData) {
+            if (snapshot.hasData == false) {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(

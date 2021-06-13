@@ -21,21 +21,33 @@ class JournalDetailsItemPage extends StatelessWidget {
         child: FutureBuilder<dynamic>(
           future: controller.getItem(controller.selectedId),
           builder: (context, snapshot) {
-            if (!snapshot.hasData) {
+            if (snapshot.hasData == false) {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(
                 child: Column(
                   children: [
                     Text('this is the ${controller.item.value.entryNumber}'),
-                    ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                          Get.toNamed(
-                            '/deduction/update',
-                          );
-                        },
-                        child: Text('Update'))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            print('pressed');
+                            Get.toNamed(
+                              '/journal-detail/update',
+                            );
+                          },
+                          child: Text('Update'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text('Cancel'),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               );

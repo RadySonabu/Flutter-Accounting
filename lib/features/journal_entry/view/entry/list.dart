@@ -38,7 +38,7 @@ class JournalEntryListPage extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed('/coa-title/create');
+                    Get.toNamed('/journal-entry/create');
                   },
                   child: Text('+'),
                 ),

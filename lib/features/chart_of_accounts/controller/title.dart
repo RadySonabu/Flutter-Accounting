@@ -41,7 +41,7 @@ class COATitleController extends GetxController {
     try {
       isLoading.value = true;
       var response = await AccountTitleService().getItem(
-          APIURL.ACCOUNTING, '$endpoint/$id', accountsTitleResultFromJson);
+          APIURL.ACCOUNTING, '$endpoint$id', accountsTitleResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         item.value = response;
@@ -76,8 +76,8 @@ class COATitleController extends GetxController {
   updateItem(map, id) async {
     try {
       isLoading.value = true;
-      var response = await AccountTitleService().updateItem(map,
-          APIURL.ACCOUNTING, '$endpoint/$id/', accountsTitleResultFromJson);
+      var response = await AccountTitleService().updateItem(
+          map, APIURL.ACCOUNTING, '$endpoint$id/', accountsTitleResultFromJson);
       log(" the response on controller is $response");
       if (response != null) {
         // item.value = response;

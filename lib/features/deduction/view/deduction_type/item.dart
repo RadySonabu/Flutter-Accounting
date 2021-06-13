@@ -13,27 +13,39 @@ class DeductionTypeItemPage extends StatelessWidget {
       pagetitle: 'Deduction Type',
       content: Container(
         child: FutureBuilder<dynamic>(
-            future: controller.getItem(controller.selectedId),
-            builder: (context, snapshot) {
-              // if (!snapshot.hasData) {
-              //   return Center(child: CircularProgressIndicator());
-              // } else {
+          future: controller.getItem(controller.selectedId),
+          builder: (context, snapshot) {
+            if (snapshot.hasData == false) {
+              return Center(child: CircularProgressIndicator());
+            } else {
               return Center(
                 child: Column(
                   children: [
                     Text('this is the ${controller.item.value.name}'),
-                    ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                          Get.toNamed('/deduction-type/update');
-                        },
-                        child: Text('Update'))
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        ElevatedButton(
+                          onPressed: () {
+                            print('pressed');
+                            Get.toNamed('/deduction-type/update');
+                          },
+                          child: Text('Update'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () {
+                            Get.back();
+                          },
+                          child: Text('Cancel'),
+                        ),
+                      ],
+                    )
                   ],
                 ),
               );
             }
-            // },
-            ),
+          },
+        ),
       ),
     );
   }

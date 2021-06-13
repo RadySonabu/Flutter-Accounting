@@ -48,7 +48,7 @@ class COATitleCreateForm extends StatelessWidget {
                 hintText: 'account_code',
                 controlName: 'account_code',
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 20),
               MyTextField(
                 hintText: 'titles',
                 controlName: 'titles',
@@ -62,24 +62,32 @@ class COATitleCreateForm extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ReactiveFormConsumer(builder: (context, form, child) {
-                return ElevatedButton(
-                  onPressed: () async {
-                    // print('asdf');
-                    log('${form.value}');
-
-                    controller.createItem(form.value);
-
-                    // print(
-                    //     'the value passed to controller is: ${json.encode(form.value)}');
-                    // print('the value passed to controller is: ${form.value}');
-                    // Get.offAllNamed('/vehicle-inventory/new-application');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        controller.createItem(form.value);
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child: Text('Submit'),
                     ),
-                  ),
-                  child: Text('Submit'),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Get.back();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child: Text('Cancel'),
+                    ),
+                  ],
                 );
               })
             ],

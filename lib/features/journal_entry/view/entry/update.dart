@@ -10,7 +10,7 @@ class JournalEntryUpdatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
-        pagetitle: 'Journal Detail',
+        pagetitle: 'Journal Entry',
         content: Padding(
           padding: const EdgeInsets.all(8.0),
           child: JournalEntryUpdateForm(),

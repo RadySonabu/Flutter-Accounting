@@ -20,26 +20,38 @@ class COATitleItem extends StatelessWidget {
       content: FutureBuilder<dynamic>(
         future: controller.getItem(controller.selectedId),
         builder: (context, snapshot) {
-          log('snapshat has ${controller.isLoading.value}');
-          log('controller ${controller.getItem(controller.selectedId)}');
-          if (!snapshot.hasData) {
+          log('snapshot has data: ${snapshot.hasData}');
+          if (snapshot.hasData == false) {
             return Center(child: CircularProgressIndicator());
           } else {
             return Center(
               child: Column(
                 children: [
                   Text('this is the ${controller.item.value.titles}'),
-                  ElevatedButton(
-                      onPressed: () {
-                        print('pressed');
-                        Get.toNamed('/coa-title/update', arguments: [
-                          controller.item.value.accountCategoryId,
-                          controller.item.value.accountCode,
-                          controller.item.value.titles,
-                          controller.item.value.description
-                        ]);
-                      },
-                      child: Text('Update'))
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          print('pressed');
+                          Get.toNamed('/coa-title/update', arguments: [
+                            controller.item.value.accountCategoryId,
+                            controller.item.value.accountCode,
+                            controller.item.value.titles,
+                            controller.item.value.description
+                          ]);
+                        },
+                        child: Text('Update'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          controller.getList();
+                          Get.toNamed('/coa-title');
+                        },
+                        child: Text('Cancel'),
+                      ),
+                    ],
+                  )
                 ],
               ),
             );
