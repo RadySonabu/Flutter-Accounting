@@ -9,6 +9,7 @@ class EmployeeDeductionUpdatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BasePage(
+      pagetitle: 'Employee Deduction',
       content: Padding(
         padding: const EdgeInsets.all(8.0),
         child: EmployeeDeductionUpdateForm(),

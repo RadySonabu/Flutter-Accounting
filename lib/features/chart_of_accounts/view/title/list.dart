@@ -63,14 +63,14 @@ class COATitlePage extends StatelessWidget {
                     } else {
                       return ListTile(
                         title: Text(
-                            'VEHICLE ID: ${controller.list[index].id.toString()}'),
+                            'ACCOUNT CATEGORY ID: ${controller.list[index].accountCategoryId.toString()}'),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                                'OWNER: ${controller.list[index].titles.toString()} '),
+                                'ACCOUNT CODE: ${controller.list[index].accountCode.toString()} '),
                             Text(
-                                'ORIGIN: ${controller.list[index].accountCode.toString()} '),
+                                'TITLE: ${controller.list[index].titles.toString()} '),
                           ],
                         ),
                         trailing: Icon(Icons.menu),

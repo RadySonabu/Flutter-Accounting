@@ -25,30 +25,45 @@ class JournalDetailsItemPage extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(
-                child: Column(
-                  children: [
-                    Text('this is the ${controller.item.value.entryNumber}'),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            print('pressed');
-                            Get.toNamed(
-                              '/journal-detail/update',
-                            );
-                          },
-                          child: Text('Update'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {
-                            Get.back();
-                          },
-                          child: Text('Cancel'),
-                        ),
+                        Text('ID: ${controller.item.value.id}'),
+                        Text(
+                            'ENTRY NUMBER: ${controller.item.value.entryNumber}'),
+                        Text(
+                            'ACCOUNT CODE: ${controller.item.value.accountCodeId}'),
+                        Text(
+                            'TRANSACTION TYPE: ${controller.item.value.transactionType}'),
+                        Text(
+                            'TRANSACTION AMOUNT: ${controller.item.value.transactionAmount}'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                print('pressed');
+                                Get.toNamed(
+                                  '/journal-detail/update',
+                                );
+                              },
+                              child: Text('Update'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               );
             }

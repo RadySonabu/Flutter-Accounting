@@ -61,15 +61,15 @@ class EmployeeDeductionListPage extends StatelessWidget {
                     );
                   } else {
                     return ListTile(
-                      title: Text(
-                          'VEHICLE ID: ${controller.list[index].id.toString()}'),
+                      title:
+                          Text('ID: ${controller.list[index].id.toString()}'),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              'Deduction: ${controller.list[index].employeeId.toString()} '),
+                              'Deduction ID: ${controller.list[index].deduction.toString()} '),
                           Text(
-                              'ORIGIN: ${controller.list[index].id.toString()} '),
+                              'EMPLOYEE ID: ${controller.list[index].employeeId.toString()} '),
                         ],
                       ),
                       trailing: Icon(Icons.menu),

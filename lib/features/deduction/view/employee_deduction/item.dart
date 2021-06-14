@@ -20,19 +20,38 @@ class EmployeeDeductionItemPage extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(
-                child: Column(
-                  children: [
-                    Text('this is the ${controller.item.value.employeeId}'),
-                    ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                          // Get.toNamed('/coa-category/update', arguments: [
-                          //   controller.item.value.name,
-                          //   controller.item.value.description
-                          // ]);
-                        },
-                        child: Text('Update'))
-                  ],
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('ID: ${controller.item.value.id}'),
+                        Text(
+                            'EMPLOYEE ID: ${controller.item.value.employeeId}'),
+                        Text('DEDUCTION: ${controller.item.value.deduction}'),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                print('pressed');
+                                Get.toNamed('/deduction-employee/update');
+                              },
+                              child: Text('Update'),
+                            ),
+                            ElevatedButton(
+                              onPressed: () {
+                                Get.back();
+                              },
+                              child: Text('Cancel'),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
                 ),
               );
             }

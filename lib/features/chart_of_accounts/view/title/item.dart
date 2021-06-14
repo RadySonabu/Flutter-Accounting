@@ -25,34 +25,47 @@ class COATitleItem extends StatelessWidget {
             return Center(child: CircularProgressIndicator());
           } else {
             return Center(
-              child: Column(
-                children: [
-                  Text('this is the ${controller.item.value.titles}'),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  elevation: 10,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          print('pressed');
-                          Get.toNamed('/coa-title/update', arguments: [
-                            controller.item.value.accountCategoryId,
-                            controller.item.value.accountCode,
-                            controller.item.value.titles,
-                            controller.item.value.description
-                          ]);
-                        },
-                        child: Text('Update'),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          controller.getList();
-                          Get.toNamed('/coa-title');
-                        },
-                        child: Text('Cancel'),
-                      ),
+                      Text('ID: ${controller.item.value.accountCategoryId}'),
+                      Text(
+                          'ACCOUNT CATEGORY ID: ${controller.item.value.accountCategoryId}'),
+                      Text(
+                          'ACCOUNT CODE: ${controller.item.value.accountCode}'),
+                      Text('ACCOUNT TITLE: ${controller.item.value.titles}'),
+                      Text('DESCRIPTION: ${controller.item.value.description}'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {
+                              print('pressed');
+                              Get.toNamed('/coa-title/update', arguments: [
+                                controller.item.value.accountCategoryId,
+                                controller.item.value.accountCode,
+                                controller.item.value.titles,
+                                controller.item.value.description
+                              ]);
+                            },
+                            child: Text('Update'),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              controller.getList();
+                              Get.toNamed('/coa-title');
+                            },
+                            child: Text('Cancel'),
+                          ),
+                        ],
+                      )
                     ],
-                  )
-                ],
+                  ),
+                ),
               ),
             );
           }

@@ -60,15 +60,15 @@ class DeductionListPage extends StatelessWidget {
                     );
                   } else {
                     return ListTile(
-                      title: Text(
-                          'VEHICLE ID: ${controller.list[index].id.toString()}'),
+                      title:
+                          Text('ID: ${controller.list[index].id.toString()}'),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              'Deduction: ${controller.list[index].name.toString()} '),
+                              'NAME: ${controller.list[index].name.toString()} '),
                           Text(
-                              'ORIGIN: ${controller.list[index].description.toString()} '),
+                              'DESCRIPTION: ${controller.list[index].description.toString()} '),
                         ],
                       ),
                       trailing: Icon(Icons.menu),

@@ -25,7 +25,7 @@ class EmployeeDeductionUpdateForm extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Text(
-                'Create Collection of Deduction',
+                'Create Employee Deduction',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 30,
@@ -40,7 +40,7 @@ class EmployeeDeductionUpdateForm extends StatelessWidget {
                 height: 20,
               ),
               MyTextField(
-                hintText: 'deduction',
+                hintText: 'Deduction',
                 controlName: 'deduction',
               ),
               SizedBox(
@@ -48,17 +48,33 @@ class EmployeeDeductionUpdateForm extends StatelessWidget {
               ),
               SizedBox(height: 20),
               ReactiveFormConsumer(builder: (context, form, child) {
-                return ElevatedButton(
-                  onPressed: () async {
-                    controller.createItem(form.value);
-                    print('${form.value}');
-                  },
-                  style: ElevatedButton.styleFrom(
-                    shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30.0),
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () async {
+                        controller.createItem(form.value);
+                        print('${form.value}');
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child: Text('Submit'),
                     ),
-                  ),
-                  child: Text('Submit'),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Get.back();
+                      },
+                      style: ElevatedButton.styleFrom(
+                        shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30.0),
+                        ),
+                      ),
+                      child: Text('Cancel'),
+                    ),
+                  ],
                 );
               })
             ],

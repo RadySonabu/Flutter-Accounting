@@ -24,41 +24,52 @@ class SingleContent extends StatelessWidget {
               return Center(child: CircularProgressIndicator());
             } else {
               return Center(
-                child: Column(
-                  children: [
-                    Text('this is the ${controller.item.value.name}'),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Card(
+                    elevation: 10,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        ElevatedButton(
-                          onPressed: () {
-                            print('pressed');
-                            Get.toNamed('/coa-category/update', arguments: [
-                              controller.item.value.name,
-                              controller.item.value.description
-                            ]);
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
+                        Text('NAME: ${controller.item.value.name}'),
+                        SizedBox(height: 20),
+                        Text(
+                            'DESCRIPTION: ${controller.item.value.description}'),
+                        SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () {
+                                print('pressed');
+                                Get.toNamed('/coa-category/update', arguments: [
+                                  controller.item.value.name,
+                                  controller.item.value.description
+                                ]);
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(30.0),
+                                ),
+                              ),
+                              child: Text('Update'),
                             ),
-                          ),
-                          child: Text('Update'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () async {
-                            Get.toNamed('/coa-category');
-                          },
-                          style: ElevatedButton.styleFrom(
-                            shape: new RoundedRectangleBorder(
-                              borderRadius: new BorderRadius.circular(30.0),
+                            ElevatedButton(
+                              onPressed: () async {
+                                Get.toNamed('/coa-category');
+                              },
+                              style: ElevatedButton.styleFrom(
+                                shape: new RoundedRectangleBorder(
+                                  borderRadius: new BorderRadius.circular(30.0),
+                                ),
+                              ),
+                              child: Text('Cancel'),
                             ),
-                          ),
-                          child: Text('Cancel'),
-                        ),
+                          ],
+                        )
                       ],
-                    )
-                  ],
+                    ),
+                  ),
                 ),
               );
             }

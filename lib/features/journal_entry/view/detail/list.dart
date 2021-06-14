@@ -61,15 +61,15 @@ class JournalDetailListPage extends StatelessWidget {
                     );
                   } else {
                     return ListTile(
-                      title: Text(
-                          'VEHICLE ID: ${controller.list[index].id.toString()}'),
+                      title:
+                          Text('ID: ${controller.list[index].id.toString()}'),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                              'Deduction: ${controller.list[index].entryNumber.toString()} '),
+                              'Entry Number: ${controller.list[index].entryNumber.toString()} '),
                           Text(
-                              'ORIGIN: ${controller.list[index].accountCodeId.toString()} '),
+                              'Account Code: ${controller.list[index].accountCodeId.toString()} '),
                         ],
                       ),
                       trailing: Icon(Icons.menu),
